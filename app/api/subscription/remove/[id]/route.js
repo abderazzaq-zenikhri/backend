@@ -7,7 +7,7 @@ export const DELETE = async (req, { params }) => {
     console.log({ id });
     await db.subscriptions.delete({
       where: {
-        id: +id,
+        id: id,
       },
     });
 
@@ -16,4 +16,5 @@ export const DELETE = async (req, { params }) => {
     console.log(error);
     return new Response("delete faild", { status: 500 });
   }
-};
+}; //                                      partial update
+// crud , create: post , read: get, update: patch or put, delete: delete                                      fully update

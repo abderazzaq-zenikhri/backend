@@ -26,5 +26,6 @@ model Subscriptions {
   plane        String
   profile      Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
   profileId    String
+  createdAt    DateTime  @default(now())
   @@index([profileId])
 }

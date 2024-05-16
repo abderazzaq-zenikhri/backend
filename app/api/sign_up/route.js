@@ -17,7 +17,6 @@ export const POST = async (req) => {
     } = await req.json();
     console.log({ email, password, fullName });
     // check if user already exists
-
     const userProfile = await db.profile.findUnique({
       where: {
         email,
@@ -33,7 +32,7 @@ export const POST = async (req) => {
     // create profile in db
     const isAdmin = secretPassword === adminPassword;
 
-    await db.profile.create({
+    const profile = await db.profile.create({
       data: {
         email,
         password,
@@ -46,7 +45,7 @@ export const POST = async (req) => {
       },
     });
 
-    return new Response("sign up success", { status: 201 });
+    return new Response(JSON.stringify(profile), { status: 201 });
   } catch (error) {
     console.log(error);
     return new Response("sign up faild", { status: 500 });
