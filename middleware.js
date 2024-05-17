@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 // the list of all allowed origins
 const allowedOrigins = [
   process.env.FRONT_URL,
+  "http://127.0.0.1:5500",
   `${process.env.FRONT_URL}/sign-up.html`,
 ];
 
